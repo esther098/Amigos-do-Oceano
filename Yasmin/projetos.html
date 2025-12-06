@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Projetos de defesa ao oceano</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #000000;
+      /* BACKGROUND PRINCIPAL - ADICIONE SUA IMAGEM AQUI */
+      background: url("fundoProjetos.png") center center / cover no-repeat fixed;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Overlay para melhorar legibilidade do texto */
+    .background-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 20, 40, 0.6); /* Azul escuro semi-transparente */
+      z-index: -1;
+    }
+
+    /* topo */
+    .topo {
+      position: relative;
+      padding: 20px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start; /* Alterado de space-between para flex-start */
+      background-color: transparent;
+    }
+
+    /* Botão da logo */
+    .logo-button {
+      all: unset;
+      cursor: pointer;
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background: transparent;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      text-decoration: none;
+      transition: transform 0.3s;
+      border: 3px solid rgba(255, 255, 255, 0.7);
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .logo-button:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      border-color: rgba(255, 255, 255, 0.9);
+    }
+
+    .logo-button img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      transition: transform 0.3s;
+    }
+
+    .logo-button:hover img {
+      transform: scale(1.1);
+    }
+
+    /* hero */
+    .hero {
+      text-align: center;
+      padding: 40px 10% 60px;
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      margin-bottom: 30px;
+      color: #FFFFFF;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .subtexto {
+      background-color: rgba(0, 40, 85, 0.85); /* Azul mais escuro */
+      padding: 25px 35px;
+      border-radius: 15px;
+      font-size: 16px;
+      line-height: 1.7;
+      color: #FFFFFF;
+      max-width: 900px;
+      margin: 0 auto;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+      border-left: 5px solid #00b7eb; /* Azul claro */
+      backdrop-filter: blur(5px);
+    }
+
+    /* blocos */
+    .bloco {
+      max-width: 1000px;
+      margin: 40px auto 60px;
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      padding: 0 40px;
+      transition: transform 0.3s ease;
+    }
+
+    .bloco:hover {
+      transform: translateY(-5px);
+    }
+
+    .circulo {
+      flex: 0 0 220px;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #FFFFFF;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+      border: 5px solid #00b7eb; /* Azul claro */
+      transition: all 0.3s ease;
+    }
+
+    .circulo:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+      border-color: #0099cc; /* Azul um pouco mais escuro */
+    }
+
+    .circulo img {
+      width: 90%;
+      height: 90%;
+      object-fit: contain;
+      padding: 10px;
+    }
+
+    .card {
+      flex: 1;
+      background: rgba(0, 40, 85, 0.9); /* Azul escuro */
+      border-radius: 25px;
+      padding: 35px 45px;
+      color: #FFFFFF;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      border: 2px solid rgba(0, 183, 235, 0.4); /* Azul claro semi-transparente */
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(5px);
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, #00b7eb, #0066cc); /* Gradiente azul */
+    }
+
+    .card h2 {
+      margin-bottom: 20px;
+      font-size: 28px;
+      color: #FFFFFF;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    }
+
+    .card h2::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 3px;
+      background: #00b7eb; /* Azul claro */
+      margin-top: 8px;
+      border-radius: 2px;
+    }
+
+    .card p {
+      font-size: 16px;
+      line-height: 1.7;
+      color: #F0F0F0;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 30px;
+      color: white;
+      background-color: rgba(0, 20, 40, 0.8);
+      margin-top: 60px;
+      font-size: 14px;
+    }
+
+    /* responsivo simples */
+    @media (max-width: 768px) {
+      .bloco {
+        flex-direction: column;
+        text-align: center;
+        margin: 30px 20px 50px;
+        padding: 0 20px;
+        gap: 25px;
+      }
+
+      .circulo {
+        width: 180px;
+        height: 180px;
+      }
+
+      .card {
+        padding: 25px;
+      }
+
+      .hero h1 {
+        font-size: 32px;
+      }
+
+      .subtexto {
+        padding: 20px;
+        font-size: 15px;
+      }
+
+      .topo {
+        padding: 15px 30px;
+        justify-content: center; /* Centraliza no mobile */
+      }
+
+      .logo-button {
+        width: 90px;
+        height: 90px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 28px;
+      }
+
+      .card h2 {
+        font-size: 24px;
+      }
+
+      .card p {
+        font-size: 15px;
+      }
+
+      .topo {
+        padding: 15px 20px;
+      }
+
+      .logo-button {
+        width: 80px;
+        height: 80px;
+      }
+    }
+
+    /* Controle de zoom da imagem de fundo */
+    @media (max-width: 1200px) {
+      body {
+        background-size: cover;
+        background-attachment: scroll; /* Remove fixed em telas menores para evitar zoom */
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Overlay para melhorar contraste do texto -->
+  <div class="background-overlay"></div>
+
+  <header class="topo">
+    <!-- Logo -->
+    <a href="../index.html" class="logo-button">
+      <img src="logo.png" alt="Amigos do Oceano" />
+    </a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Projetos de defesa ao oceano</h1>
+      <p class="subtexto">
+        Você sabia que a pesca predatória e a poluição dos oceanos podem ser crimes? As punições incluem multas,
+        serviço comunitário e até reclusão de 2 a 5 anos. Mesmo assim, a proteção dos oceanos é precária e por isso
+        existem projetos e ONGs que ajudam na fiscalização e na conscientização da população. Estas são as que nos
+        inspiraram a fazer o projeto; veja os principais:
+      </p>
+    </section>
+
+    <section class="bloco">
+      <div class="circulo">
+        <img src="Logoseashep.png" alt="Logo Sea Shepherd Brasil">
+      </div>
+      <div class="card">
+        <h2>Sea Shepard Brasil</h2>
+        <p>A Sea Shepherd Brasil é uma organização sem fins lucrativos de proteção à vida marinha. Foi fundada em 1999 pelo Capitão Paul Watson – também fundador do Greenpeace e da Sea Shepherd Conservation Society, em 1977.
+Desde as menores criaturas até os gigantes das águas, nossas campanhas defendem baleias, golfinhos, tubarões, peixes-boi, botos, tartarugas, peixes, aves aquáticas e diversos outros animais de ameaças como a pesca ilegal, a pesca excessiva e a destruição de ecossistemas aquáticos.
+Agimos de maneira direta no combate a crimes ambientais no oceano e nos rios, usando táticas inovadoras para investigar, documentar e expor atividades ilegais. Atuamos em cooperação com as agências responsáveis pela aplicação das leis de conservação, com projetos de educação e sensibilização do público, e com advocacy para implementar melhores leis de proteção da vida na água.</p>
+      </div>
+    </section>
+
+    <section class="bloco">
+      <div class="circulo">
+        <img src="LogoTamar.png" alt="Logo Projeto Tamar">
+      </div>
+      <div class="card">
+        <h2>Projeto Tamar</h2>
+        <p>A Fundação Projeto Tamar atua no litoral brasileiro desde a década de 80 com a missão de promover a recuperação das tartarugas marinhas, através de ações de pesquisa, conservação e inclusão social.
+É uma entidade de direito privado, sem fins lucrativos e co-executora do PAN - Plano Nacional de Ação para a Conservação das Tartarugas Marinhas no Brasil do ICMBio/MMA, sendo responsável por grande parte das ações previstas.
+Está presente em 22 localidades distribuídas em oito estados brasileiros, entre zonas costeiras e ilhas oceânicas: Rio Grande do Norte, Pernambuco, Sergipe, Bahia, Espírito Santo, Rio de Janeiro, São Paulo e Santa Catarina. Desenvolve ações de pesquisa, manejo e proteção das cinco espécies de tartarugas marinhas que ocorrem no Brasil, além de atividades de envolvimento comunitário, inclusão social, sensibilização e educação ambiental, valorização da cultura local e geração de oportunidades de trabalho e renda.
+Como resultado desse esforço contínuo vem obtendo conquistas importantes: recuperação das populações comprovada; ampliação do conhecimento científico; apoio das comunidades litorâneas que cessaram o uso direto das tartarugas passando a protegê-las; sensibilização e apoio da sociedade em geral e a geração de recursos próprios (sustentabilidade).</p>
+      </div>
+    </section>
+
+    <section class="bloco">
+      <div class="circulo">
+        <img src="LogoCoralVivo.png" alt="Logo Projeto Coral Vivo">
+      </div>
+      <div class="card">
+        <h2>Projeto Coral Vivo</h2>
+        <p>O projeto CORAL VIVO começou a ganhar forma em maio de 2003, embora seus fundadores já possuíssem mais de 40 anos de experiência em conservação marinha. Originado no Museu Nacional da UFRJ, o projeto focou inicialmente na pesquisa de comunidades coralíneas, mas expandiu suas atividades para incluir a educação e a sensibilização de diferentes grupos sociais interessados na proteção dos recifes de coral. Hoje, é uma referência na defesa da costa coralínea no Brasil, promovendo a colaboração entre pesquisadores e a sociedade.</p>
+      </div>
+    </section>
+  </main>
+
+ 
+</body>
+</html>
